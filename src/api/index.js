@@ -21,3 +21,15 @@ export const getCountry = async (searchQuery) => {
     console.log(error);
   }
 };
+
+export const getRegion = async (region) => {
+  try {
+    const { data } = await axios.get(
+      `https://restcountries.eu/rest/v2/region/${region}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

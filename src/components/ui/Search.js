@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Search = ({ handleSearch }) => {
+const Search = ({ handleSearch, clickOption }) => {
+  const [regionOption, setRegionOption] = useState(false);
+
+  const clickRegion = () => {
+    setRegionOption(!regionOption);
+  };
+
   return (
     <div className='flex items-center justify-between mt-12 text-white-dark-mode'>
       <div className='flex items-center'>
@@ -25,7 +31,10 @@ const Search = ({ handleSearch }) => {
       </div>
       <div className='flex items-center'>
         <div className='relative'>
-          <button className='text-sm bg-dark-blue pr-16 pl-4 py-3 focus:outline-none rounded shadow-md'>
+          <button
+            onClick={clickRegion}
+            className='text-sm bg-dark-blue pr-16 pl-4 py-3 focus:outline-none rounded shadow-md'
+          >
             Filter by Region
             <div className='absolute top-0'>
               <svg
@@ -37,6 +46,47 @@ const Search = ({ handleSearch }) => {
               </svg>
             </div>
           </button>
+          {regionOption && (
+            <div className='absolute top-0 bg-dark-blue mt-12 w-full py-2 px-4 rounded text-sm '>
+              <div className='flex flex-col text-sm '>
+                <button
+                  onClick={(e) => clickOption(e.target.value)}
+                  value='Africa'
+                  className='mt-2 mb-2 hover:text-gray-400 cursor-pointer text-left focus:outline-none focus:outline-none'
+                >
+                  Africa
+                </button>
+                <button
+                  onClick={(e) => clickOption(e.target.value)}
+                  value='America'
+                  className='mt-2 mb-2 hover:text-gray-400 cursor-pointer text-left focus:outline-none'
+                >
+                  America
+                </button>
+                <button
+                  onClick={(e) => clickOption(e.target.value)}
+                  value='Asia'
+                  className='mt-2 mb-2 hover:text-gray-400 cursor-pointer text-left focus:outline-none'
+                >
+                  Asia
+                </button>
+                <button
+                  onClick={(e) => clickOption(e.target.value)}
+                  value='Europe'
+                  className='mt-2 mb-2 hover:text-gray-400 cursor-pointer text-left focus:outline-none'
+                >
+                  Europe
+                </button>
+                <button
+                  onClick={(e) => clickOption(e.target.value)}
+                  value='Oceania'
+                  className='mt-2 mb-2 hover:text-gray-400 cursor-pointer text-left focus:outline-none'
+                >
+                  Oceania
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
