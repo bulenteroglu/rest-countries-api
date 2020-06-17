@@ -1,24 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-import { getCountries } from "../../api";
-
-const Cards = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchAPI = async () => {
-      setData(await getCountries());
-    };
-
-    fetchAPI();
-  }, []);
-
+const Cards = ({ data }) => {
   return (
     <div className='mt-16'>
       <div className='grid grid-cols-4 gap-12'>
         {data &&
           data.map((country) => (
-            <div className='bg-dark-blue text-white-dark-mode shadow-lg rounded overflow-hidden mb-16'>
+            <div
+              key={country.name}
+              className='bg-dark-blue text-white-dark-mode shadow-lg rounded overflow-hidden mb-16'
+            >
               <a href='#'>
                 <img
                   className='object-cover w-full h-48'

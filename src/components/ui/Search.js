@@ -1,6 +1,6 @@
 import React from "react";
 
-const Search = () => {
+const Search = ({ handleSearch }) => {
   return (
     <div className='flex items-center justify-between mt-12 text-white-dark-mode'>
       <div className='flex items-center'>
@@ -10,6 +10,7 @@ const Search = () => {
             type='text'
             className='bg-dark-blue px-16 py-3 focus:outline-none rounded shadow-md'
             placeholder='Search for a country...'
+            onChange={(e) => handleSearch(e.target.value)}
           />
           <div className='absolute top-0'>
             <svg

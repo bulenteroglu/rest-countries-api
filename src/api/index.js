@@ -9,3 +9,15 @@ export const getCountries = async () => {
     console.log(error);
   }
 };
+
+export const getCountry = async (searchQuery) => {
+  try {
+    const { data } = await axios.get(
+      `https://restcountries.eu/rest/v2/name/${searchQuery}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
