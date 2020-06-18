@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Search = ({ handleSearch, clickOption }) => {
+const Search = ({ handleSearch, clickOption, toggleDark }) => {
   const [regionOption, setRegionOption] = useState(false);
 
   const clickRegion = () => {
@@ -8,13 +8,19 @@ const Search = ({ handleSearch, clickOption }) => {
   };
 
   return (
-    <div className='flex flex-col md:flex-row md:items-center justify-between mt-12  text-white-dark-mode'>
+    <div
+      className={`${
+        toggleDark ? "text-white-dark-mode" : "text-dark-gray"
+      } transition ease-out duration-500 flex flex-col md:flex-row md:items-center justify-between mt-12  `}
+    >
       <div className='flex items-center px-8 md:px-0'>
         <div className='relative'>
           <input
             onClick={(e) => setRegionOption(false)}
             type='text'
-            className='mb-4 md:mb-0 bg-dark-blue px-16 py-3 focus:outline-none rounded shadow-md sm:w-64 justify-center items-center md:w-108'
+            className={`${
+              toggleDark ? "bg-dark-blue" : "bg-white-dark-mode"
+            } transition ease-out duration-500  mb-4 md:mb-0 px-16 py-3 focus:outline-none rounded shadow-md sm:w-64 justify-center items-center md:w-108`}
             placeholder='Search for a country...'
             onChange={(e) => handleSearch(e.target.value)}
           />
@@ -33,7 +39,9 @@ const Search = ({ handleSearch, clickOption }) => {
         <div className='relative'>
           <button
             onClick={clickRegion}
-            className='ml-8 md:ml-0 text-sm bg-dark-blue pr-16 pl-4 py-3 focus:outline-none rounded shadow-md'
+            className={` ${
+              toggleDark ? "bg-dark-blue" : "bg-white-dark-mode"
+            } transition ease-out duration-500 ml-8 md:ml-0 text-sm  pr-16 pl-4 py-3 focus:outline-none rounded shadow-md`}
           >
             Filter by Region
             <div className='absolute top-0'>
@@ -47,7 +55,11 @@ const Search = ({ handleSearch, clickOption }) => {
             </div>
           </button>
           {regionOption && (
-            <div className='ml-8 md:ml-0 absolute top-0 bg-dark-blue mt-12 w-full py-2 px-4 rounded text-sm '>
+            <div
+              className={` ${
+                toggleDark ? "bg-dark-blue" : "bg-white-dark-mode"
+              } transition ease-out duration-500 ml-8 md:ml-0 absolute top-0 mt-12 w-full py-2 px-4 rounded text-sm`}
+            >
               <div className='flex flex-col text-sm '>
                 <button
                   onClick={(e) => clickOption(e.target.value)}

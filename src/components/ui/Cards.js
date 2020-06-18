@@ -1,14 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Cards = ({ data }) => {
+const Cards = ({ data, toggleDark }) => {
   return (
     <div className='mt-16'>
       <div className='grid md:grid-cols-4 gap-12'>
         {data &&
           data.map((country) => (
             <Link key={country.name} to={`/country/${country.name}`}>
-              <div className='mx-8 md:mx-0 bg-dark-blue text-white-dark-mode shadow-lg rounded overflow-hidden md:mb-16'>
+              <div
+                className={`${
+                  toggleDark
+                    ? "bg-dark-blue text-white-dark-mode"
+                    : "bg-white-dark-mode text-very-dark-blue-light-mode"
+                }  mx-8 md:mx-0 shadow-lg rounded overflow-hidden md:mb-16`}
+              >
                 <a href='#'>
                   <img
                     className='object-cover w-full h-48'

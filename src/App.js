@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/ui/Navbar";
+import Footer from "./components/ui/Footer";
 import Search from "./components/ui/Search";
 import Cards from "./components/ui/Cards";
 import CountryDetail from "./components/ui/CountryDetail";
@@ -9,6 +10,11 @@ import { getCountry, getCountries, getRegion } from "./api";
 function App() {
   const [data, setData] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
+  const [toggleDark, setToggleDark] = useState(true);
+
+  const darkMode = () => {
+    setToggleDark(!toggleDark);
+  };
 
   const clickOption = (region) => {
     switch (region) {
@@ -63,8 +69,12 @@ function App() {
 
   return (
     <Router>
-      <div className='bg-very-dark-blue min-h-screen'>
-        <Navbar />
+      <div
+        className={`${
+          toggleDark ? "bg-very-dark-blue" : "bg-very-light-gray"
+        } transition ease-out duration-500 min-h-screen`}
+      >
+        <Navbar darkMode={darkMode} toggleDark={toggleDark} />
         <div className='container mx-auto'>
           {/* <Search handleSearch={handleSearch} clickOption={clickOption} /> */}
           <Route
@@ -76,16 +86,25 @@ function App() {
                 data={data}
                 handleSearch={handleSearch}
                 clickOption={clickOption}
+                toggleDark={toggleDark}
               />
             )}
           />
           <Route
             exact
             path='/'
-            render={(props) => <Cards {...props} data={data} />}
+            render={(props) => (
+              <Cards {...props} data={data} toggleDark={toggleDark} />
+            )}
           />
         </div>
-        <Route path='/country/:id' component={CountryDetail} />
+        <Route
+          path='/country/:id'
+          render={(props) => (
+            <CountryDetail {...props} data={data} toggleDark={toggleDark} />
+          )}
+        />
+        <Footer toggleDark={toggleDark} />
       </div>
     </Router>
   );

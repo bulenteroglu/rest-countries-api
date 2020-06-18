@@ -6,6 +6,7 @@ const CountryDetail = ({
   match: {
     params: { id },
   },
+  toggleDark,
 }) => {
   const [data, setData] = useState([]);
 
@@ -23,11 +24,15 @@ const CountryDetail = ({
 
   return (
     <>
-      <div className='px-12 md:px-20 mt-12 md:mt-20 md:flex md:flex-col text-white-dark-mode min-h-screen'>
+      <div
+        className={` ${
+          toggleDark ? "text-white-dark-mode" : "text-very-dark-blue-light-mode"
+        } px-12 md:px-20 mt-12 md:mt-20 md:flex md:flex-col min-h-screen`}
+      >
         <div className='flex items-center'>
           <div className='relative'>
             <Link to='/'>
-              <button className='px-10 py-1 bg-dark-blue md:px-20 md:py-2 rounded shadow-lg text-center focus:outline-none'>
+              <button className='px-10 py-1  md:px-20 md:py-2 rounded shadow-lg text-center focus:outline-none'>
                 Back
               </button>
             </Link>
@@ -43,15 +48,13 @@ const CountryDetail = ({
           <div className='md:flex flex-col md:flex-row mt-12'>
             <div className='md:flex-1'>
               <img
-                className='w-full h-full md:w-172 md:h-120'
+                className='w-full h-full md:w-172 md:h-120 rounded'
                 src={country.flag}
                 alt={country.name}
               />
             </div>
             <div className='mt-8 md:flex md:flex-col flex-1 text-lg justify-center'>
-              <h2 className='font-semibold text-3xl text-white-dark-mode'>
-                {country.name}
-              </h2>
+              <h2 className='font-semibold text-3xl'>{country.name}</h2>
               <div className='md:flex md:flex-col'>
                 <div className='text-sm md:flex md:text-base'>
                   <div>
@@ -110,7 +113,7 @@ const CountryDetail = ({
                       <span
                         className={`${
                           i ? "ml-2" : "ml-3"
-                        }  sm:mt-8 md:mt-0 mb-3 md:mb-0 font-light text-sm bg-dark-blue py-1 px-4 shadow-md  `}
+                        }  sm:mt-8 md:mt-0 mb-3 md:mb-0 font-light text-sm  py-1 px-4 shadow-md  `}
                       >
                         {border}
                       </span>
