@@ -13,6 +13,10 @@ module.exports = {
         "very-light-gray": "hsl(0, 0%, 98%)",
         "white-dark-mode": "hsl(0, 0%, 100%)",
       },
+      spacing: {
+        "120": "30rem",
+        "172": "43rem",
+      },
     },
   },
   variants: {},

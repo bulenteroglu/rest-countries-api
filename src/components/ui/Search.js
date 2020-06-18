@@ -12,6 +12,7 @@ const Search = ({ handleSearch, clickOption }) => {
       <div className='flex items-center'>
         <div className='relative'>
           <input
+            onClick={(e) => setRegionOption(false)}
             style={{ width: "27rem" }}
             type='text'
             className='bg-dark-blue px-16 py-3 focus:outline-none rounded shadow-md'
@@ -58,7 +59,7 @@ const Search = ({ handleSearch, clickOption }) => {
                 </button>
                 <button
                   onClick={(e) => clickOption(e.target.value)}
-                  value='America'
+                  value='Americas'
                   className='mt-2 mb-2 hover:text-gray-400 cursor-pointer text-left focus:outline-none'
                 >
                   America

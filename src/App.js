@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/ui/Navbar";
 import Search from "./components/ui/Search";
 import Cards from "./components/ui/Cards";
-
+import CountryDetail from "./components/ui/CountryDetail";
 import { getCountry, getCountries, getRegion } from "./api";
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
       case "Africa":
         setSelectedOption("Africa");
         break;
-      case "America":
-        setSelectedOption("America");
+      case "Americas":
+        setSelectedOption("Americas");
         break;
       case "Asia":
         setSelectedOption("Asia");
@@ -61,13 +62,32 @@ function App() {
   }, []);
 
   return (
-    <div className='bg-very-dark-blue min-h-screen'>
-      <Navbar />
-      <div className='container mx-auto'>
-        <Search handleSearch={handleSearch} clickOption={clickOption} />
-        <Cards data={data} />
+    <Router>
+      <div className='bg-very-dark-blue min-h-screen'>
+        <Navbar />
+        <div className='container mx-auto'>
+          {/* <Search handleSearch={handleSearch} clickOption={clickOption} /> */}
+          <Route
+            exact
+            path='/'
+            render={(props) => (
+              <Search
+                {...props}
+                data={data}
+                handleSearch={handleSearch}
+                clickOption={clickOption}
+              />
+            )}
+          />
+          <Route
+            exact
+            path='/'
+            render={(props) => <Cards {...props} data={data} />}
+          />
+        </div>
+        <Route path='/country/:id' component={CountryDetail} />
       </div>
-    </div>
+    </Router>
   );
 }
 
