@@ -8,14 +8,13 @@ const Search = ({ handleSearch, clickOption }) => {
   };
 
   return (
-    <div className='flex items-center justify-between mt-12 text-white-dark-mode'>
-      <div className='flex items-center'>
+    <div className='flex flex-col md:flex-row md:items-center justify-between mt-12  text-white-dark-mode'>
+      <div className='flex items-center px-8 md:px-0'>
         <div className='relative'>
           <input
             onClick={(e) => setRegionOption(false)}
-            style={{ width: "27rem" }}
             type='text'
-            className='bg-dark-blue px-16 py-3 focus:outline-none rounded shadow-md'
+            className='mb-4 md:mb-0 bg-dark-blue px-16 py-3 focus:outline-none rounded shadow-md sm:w-64 justify-center items-center md:w-108'
             placeholder='Search for a country...'
             onChange={(e) => handleSearch(e.target.value)}
           />
@@ -34,7 +33,7 @@ const Search = ({ handleSearch, clickOption }) => {
         <div className='relative'>
           <button
             onClick={clickRegion}
-            className='text-sm bg-dark-blue pr-16 pl-4 py-3 focus:outline-none rounded shadow-md'
+            className='ml-8 md:ml-0 text-sm bg-dark-blue pr-16 pl-4 py-3 focus:outline-none rounded shadow-md'
           >
             Filter by Region
             <div className='absolute top-0'>
@@ -48,7 +47,7 @@ const Search = ({ handleSearch, clickOption }) => {
             </div>
           </button>
           {regionOption && (
-            <div className='absolute top-0 bg-dark-blue mt-12 w-full py-2 px-4 rounded text-sm '>
+            <div className='ml-8 md:ml-0 absolute top-0 bg-dark-blue mt-12 w-full py-2 px-4 rounded text-sm '>
               <div className='flex flex-col text-sm '>
                 <button
                   onClick={(e) => clickOption(e.target.value)}

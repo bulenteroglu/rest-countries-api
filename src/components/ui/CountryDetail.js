@@ -23,16 +23,16 @@ const CountryDetail = ({
 
   return (
     <>
-      <div className='px-20 mt-20 flex flex-col text-white-dark-mode'>
+      <div className='px-12 md:px-20 mt-12 md:mt-20 md:flex md:flex-col text-white-dark-mode min-h-screen'>
         <div className='flex items-center'>
           <div className='relative'>
             <Link to='/'>
-              <button className='bg-dark-blue px-20 py-2 rounded shadow-lg text-center focus:outline-none'>
+              <button className='px-10 py-1 bg-dark-blue md:px-20 md:py-2 rounded shadow-lg text-center focus:outline-none'>
                 Back
               </button>
             </Link>
 
-            <div className='fill-current w-4 absolute top-0 mt-3 ml-10'>
+            <div className='mt-2 ml-3 fill-current w-4 absolute top-0 md:mt-3 md:ml-10'>
               <svg id='icon-arrow-left2' viewBox='0 0 32 32'>
                 <path d='M12.586 27.414l-10-10c-0.781-0.781-0.781-2.047 0-2.828l10-10c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-6.586 6.586h19.172c1.105 0 2 0.895 2 2s-0.895 2-2 2h-19.172l6.586 6.586c0.39 0.39 0.586 0.902 0.586 1.414s-0.195 1.024-0.586 1.414c-0.781 0.781-2.047 0.781-2.828 0z'></path>
               </svg>
@@ -40,48 +40,52 @@ const CountryDetail = ({
           </div>
         </div>
         {country && (
-          <div className='flex mt-12'>
-            <div className='flex flex-1'>
-              <img className='w-172 h-120' src={country.flag} alt='' />
+          <div className='md:flex flex-col md:flex-row mt-12'>
+            <div className='md:flex-1'>
+              <img
+                className='w-full h-full md:w-172 md:h-120'
+                src={country.flag}
+                alt={country.name}
+              />
             </div>
-            <div className='flex flex-col flex-1 text-lg justify-center'>
+            <div className='mt-8 md:flex md:flex-col flex-1 text-lg justify-center'>
               <h2 className='font-semibold text-3xl text-white-dark-mode'>
                 {country.name}
               </h2>
-              <div className='flex flex-col'>
-                <div className='flex'>
+              <div className='md:flex md:flex-col'>
+                <div className='text-sm md:flex md:text-base'>
                   <div>
-                    <p className='mt-4 font-medium'>
+                    <p className='mt-3 mt-4 font-medium'>
                       Native Name:{" "}
                       <span className='font-light'>{country.nativeName}</span>
                     </p>
-                    <p className='mt-2 font-medium'>
+                    <p className='mt-3 md:mt-2 font-medium'>
                       Population:{" "}
                       <span className='font-light'>
                         {country.population.toLocaleString()}
                       </span>
                     </p>
-                    <p className='mt-2 font-medium'>
+                    <p className='mt-3 md:mt-2 font-medium'>
                       Region:{" "}
                       <span className='font-light'>{country.region}</span>
                     </p>
-                    <p className='mt-2 font-medium'>
+                    <p className='mt-3 md:mt-2 font-medium'>
                       Sub Region:{" "}
                       <span className='font-light'>{country.subregion}</span>
                     </p>
-                    <p className='mt-2 font-medium'>
+                    <p className='mt-3 md:mt-2 font-medium'>
                       Capital:{" "}
                       <span className='font-light'>{country.capital}</span>
                     </p>
                   </div>
-                  <div className='mt-4 ml-32'>
+                  <div className='mt-10 md:mt-4 md:ml-32'>
                     <p className='font-medium'>
                       Top Level Domain:{" "}
                       <span className='font-light'>
                         {country.topLevelDomain}
                       </span>
                     </p>
-                    <p className='mt-2 font-medium'>
+                    <p className='mt-3 md:mt-2 font-medium'>
                       Currencies:{" "}
                       {Object.keys(country.currencies).map((key) => (
                         <span key={key} className='font-light'>
@@ -89,7 +93,7 @@ const CountryDetail = ({
                         </span>
                       ))}
                     </p>
-                    <p className='mt-2 font-medium'>
+                    <p className='mt-3 md:mt-2 font-medium'>
                       Languages:{" "}
                       {Object.keys(country.languages).map((key, i) => (
                         <span key={key} className='font-light'>
@@ -99,14 +103,14 @@ const CountryDetail = ({
                     </p>
                   </div>
                 </div>
-                <div className='mt-12'>
-                  <p className='mt-2 font-medium'>
+                <div className='mt-8 md:mt-12'>
+                  <p className='flex flex-wrap md:flex-none md:mt-2 font-medium md:mb-8 md:mb-0 flex-wrap'>
                     Border Countries:{" "}
                     {country.borders.map((border, i) => (
                       <span
                         className={`${
                           i ? "ml-2" : "ml-3"
-                        } font-light text-sm bg-dark-blue py-1 px-4 shadow-md`}
+                        }  sm:mt-8 md:mt-0 mb-3 md:mb-0 font-light text-sm bg-dark-blue py-1 px-4 shadow-md  `}
                       >
                         {border}
                       </span>

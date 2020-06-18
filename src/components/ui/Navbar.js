@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <header className='bg-dark-blue font-nunito shadow-xl'>
-      <nav className='flex justify-between px-20 py-6 items-center text-white-dark-mode'>
+      <nav className='flex justify-between px-4 md:px-20 py-6 items-center text-white-dark-mode'>
         <Link to='/'>
-          <h1 className='text-2xl font-extrabold'>Where in the world?</h1>
+          <h1 className='md:text-2xl font-extrabold'>Where in the world?</h1>
         </Link>
         <button className='flex items-center focus:outline-none'>
           <svg className='w-8 fill-current' id='icon-moon' viewBox='0 0 32 32'>

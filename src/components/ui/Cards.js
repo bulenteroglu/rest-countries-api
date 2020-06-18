@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const Cards = ({ data }) => {
   return (
     <div className='mt-16'>
-      <div className='grid grid-cols-4 gap-12'>
+      <div className='grid md:grid-cols-4 gap-12'>
         {data &&
           data.map((country) => (
             <Link key={country.name} to={`/country/${country.name}`}>
-              <div className='bg-dark-blue text-white-dark-mode shadow-lg rounded overflow-hidden mb-16'>
+              <div className='mx-8 md:mx-0 bg-dark-blue text-white-dark-mode shadow-lg rounded overflow-hidden md:mb-16'>
                 <a href='#'>
                   <img
                     className='object-cover w-full h-48'

@@ -14,6 +14,7 @@ module.exports = {
         "white-dark-mode": "hsl(0, 0%, 100%)",
       },
       spacing: {
+        "108": "27rem",
         "120": "30rem",
         "172": "43rem",
       },
